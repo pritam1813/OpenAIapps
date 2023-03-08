@@ -1,0 +1,19 @@
+extends layout.pug 
+
+block content 
+    .container 
+        .row 
+            .col
+                h2 Generate Image
+                form(action="/generateImage", method="post")  
+                    input(type="text" placeholder="Describe text for Image generation" name="gentext")
+                    input(type="submit", value="Generate")
+        if imageData 
+            .row 
+                .col#imageList
+                    h3 Images
+                    ul 
+                        for image of imageData 
+                           - var imgurl = image.url
+                           li
+                            img(src=imgurl, alt="")
